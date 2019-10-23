@@ -7,4 +7,6 @@ paper. The algorithm takes in a general distance matrix which it uses for error 
 the oracle to gather samples from. All code is in python and assumes Python 3. The implementation requires numpy, 
 scipy, sklearn, and matplotlib. 
 
-For a simple demo, please view Example_experiment.ipynb in this repo
+For a simple demo, please view [Example_experiment.ipynb](https://github.com/blakemas/nngraph/blob/master/Example_experiment.ipynb) in this repo
+
+The paper can be found [here](https://arxiv.org/abs/1905.13267) and will appear at NeurIPS 2019!
