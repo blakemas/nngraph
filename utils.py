@@ -25,6 +25,11 @@ def get_true_nns(X):
     _, true_nns = nbrs.kneighbors(X)
     return true_nns[:, 1]
 
+def get_true_nns_from_D(D):
+    '''Returns each points true nearest neighbor'''
+    tmp = np.array([np.argsort(D[i]) for i in range(D.shape[0])])
+    return tmp[:,1]
+
 def shuffle_zeros(a, order):
     '''Randomly permute zero indices in a list'''
     inds = np.where(a[order] == 0)[0]

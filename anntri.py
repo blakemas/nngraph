@@ -3,7 +3,7 @@ import numpy as np
 from utils import *
 
 class ANNTri:
-    def __init__(self, dist_func, embedding, epsilon, sigma, delta, triangle, Ks, 
+    def __init__(self, dist_func, distance_mat, epsilon, sigma, delta, triangle, Ks, 
                                                                     maxPulls=10**5,
                                                                     random_sample=False):
 
@@ -18,9 +18,8 @@ class ANNTri:
         Parameters:
         dist_func: callable function that takes a distance matrix D, i,j indices
                     and a noise standard deviation and returns D[i,j] + noise
-        embedding: nd array used to create a Euclidean distance matrix. For metrics 
-                    other than Euclidean, code can be modified to take in a distance 
-                    matrix and true_nns can be computed from that instead.
+        distance_mat: True distance matrix used for error compute only and
+                        passed as argument to oracle. 
         epsilon: float, parameter for law of iterated log bound
         delta: failure probability, parameter for law of iterated log bound
         sigma: standard deviation of desired noise level
@@ -36,9 +35,8 @@ class ANNTri:
 
         # parameters
         self.d_oracle = dist_func 
-        self.embedding = embedding
-        self.true_D = compute_true_D(self.embedding)
-        self.true_nns = get_true_nns(self.embedding)
+        self.true_D = distance_mat
+        self.true_nns = get_true_nns_from_D(self.true_D)
         self.epsilon = epsilon
         self.sigma = sigma
         self.delta = delta
@@ -234,13 +232,14 @@ if __name__ == '__main__':
     np.random.seed(40)
     embedding = generate(clusters, points_per_cluster, 
                                     separation_factor=separation_factor)
+    true_D = compute_true_D(embedding)
     epsilon = 0.7
     sigma = 0.1
     delta = 0.1
     triangle = True
     Ks = [1, 3, 5, 10]
     # instantiate
-    instance = ANNTri(dist_func, embedding, epsilon, sigma, delta, triangle, 
+    instance = ANNTri(dist_func, true_D, epsilon, sigma, delta, triangle, 
                                                                 Ks, 
                                                                 maxPulls=10**5,
                                                                 random_sample=False)
