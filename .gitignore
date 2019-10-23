@@ -1,0 +1,20 @@
+*.DS_Store
+*.npy
+*.json
+*.pyc
+__pycache__/
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+*.gz
+*.log
+.ipynb_checkpoints/*
+
+# C extensions
+*.so
+*.c
+*.sh
+*.egg
