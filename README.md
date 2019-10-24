@@ -9,4 +9,4 @@ scipy, sklearn, and matplotlib.
 
 For a simple demo, please view [Example_experiment.ipynb](https://github.com/blakemas/nngraph/blob/master/Example_experiment.ipynb) in this repo
 
-The paper can be found [here](https://arxiv.org/abs/1905.13267) and will appear at NeurIPS 2019!
+The paper can be found [here](https://arxiv.org/abs/1905.13267) and will appear at NeurIPS 2019! For a warm introduction to this work, we have included slides [here](https://github.com/blakemas/nngraph/blob/master/nngraph_slides.pdf). 
